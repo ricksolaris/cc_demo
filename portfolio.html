@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>久溢 - 技术负责人 | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'chinese': ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Noto Sans CJK SC', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                    },
+                    colors: {
+                        'tech-blue': '#007AFF',
+                        'tech-purple': '#AF52DE',
+                        'tech-green': '#30D158',
+                        'tech-orange': '#FF9500',
+                        'tech-pink': '#FF2D92',
+                        'tech-teal': '#64D2FF',
+                        'dark-bg': '#0A0A0A',
+                        'card-bg': '#1C1C1E',
+                        'card-border': '#2C2C2E',
+                    },
+                    backdropBlur: {
+                        'xs': '2px',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+                        'data-flow': 'data-flow 3s linear infinite',
+                        'gradient-shift': 'gradient-shift 4s ease-in-out infinite',
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 122, 255, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(0, 122, 255, 0.6); }
+        }
+
+        @keyframes data-flow {
+            0% { transform: translateX(-100%); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateX(100%); opacity: 0; }
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .gradient-bg {
+            background: linear-gradient(-45deg, #007AFF, #AF52DE, #30D158, #FF9500);
+            background-size: 400% 400%;
+            animation: gradient-shift 4s ease-in-out infinite;
+        }
+
+        .tech-glow {
+            box-shadow: 0 0 30px rgba(0, 122, 255, 0.2);
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #007AFF, #AF52DE);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .line-chart {
+            position: relative;
+            height: 60px;
+            overflow: hidden;
+        }
+
+        .line-chart::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #007AFF, transparent);
+            animation: data-flow 3s linear infinite;
+        }
+
+        .tech-pattern {
+            background-image:
+                radial-gradient(circle at 25% 25%, rgba(0, 122, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(175, 82, 222, 0.1) 0%, transparent 50%);
+        }
+
+        .glass-effect {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(28, 28, 30, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-dark-bg text-white font-chinese min-h-screen">
+    <!-- 主容器 -->
+    <div class="max-w-7xl mx-auto p-6 space-y-6">
+        <!-- 顶部导航栏 -->
+        <nav class="flex justify-between items-center py-4">
+            <div class="text-2xl font-bold text-gradient">Portfolio</div>
+            <div class="flex space-x-6">
+                <a href="#about" class="text-gray-400 hover:text-white transition-colors">关于</a>
+                <a href="#experience" class="text-gray-400 hover:text-white transition-colors">经验</a>
+                <a href="#skills" class="text-gray-400 hover:text-white transition-colors">技能</a>
+                <a href="#contact" class="text-gray-400 hover:text-white transition-colors">联系</a>
+            </div>
+        </nav>
+
+        <!-- Bento Grid 布局 -->
+        <div class="grid grid-cols-1 lg:grid-cols-4 xl:grid-cols-6 gap-6">
+
+            <!-- 主介绍卡片 -->
+            <div class="lg:col-span-2 xl:col-span-3 glass-effect rounded-3xl p-8 card-hover tech-pattern">
+                <div class="space-y-6">
+                    <div class="w-24 h-24 rounded-full bg-gradient-to-br from-tech-blue to-tech-purple flex items-center justify-center animate-pulse-glow">
+                        <i class="fas fa-user-tie text-3xl text-white"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-5xl font-black text-white mb-2">久溢</h1>
+                        <p class="text-xl text-tech-blue font-semibold mb-4">Technology Lead</p>
+                        <p class="text-lg text-gray-300 leading-relaxed">
+                            工行TOP3助贷合作机构技术负责人<br>
+                            <span class="text-sm text-gray-400">Specialized in full-stack system architecture</span>
+                        </p>
+                    </div>
+                    <div class="flex space-x-4">
+                        <div class="px-4 py-2 bg-tech-blue bg-opacity-20 rounded-full border border-tech-blue border-opacity-30">
+                            <span class="text-tech-blue text-sm">Full-Stack</span>
+                        </div>
+                        <div class="px-4 py-2 bg-tech-purple bg-opacity-20 rounded-full border border-tech-purple border-opacity-30">
+                            <span class="text-tech-purple text-sm">0-1 Expert</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 核心技能统计 -->
+            <div class="lg:col-span-1 xl:col-span-1 glass-effect rounded-3xl p-6 card-hover">
+                <div class="text-center space-y-4">
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-tech-green to-tech-teal flex items-center justify-center">
+                        <i class="fas fa-code text-2xl text-white"></i>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-black text-white">8+</div>
+                        <div class="text-sm text-gray-400">Years Experience</div>
+                    </div>
+                    <div class="line-chart"></div>
+                </div>
+            </div>
+
+            <!-- 项目成功率 -->
+            <div class="lg:col-span-1 xl:col-span-1 glass-effect rounded-3xl p-6 card-hover">
+                <div class="text-center space-y-4">
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-tech-orange to-tech-pink flex items-center justify-center">
+                        <i class="fas fa-chart-line text-2xl text-white"></i>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-black text-white">95%</div>
+                        <div class="text-sm text-gray-400">Success Rate</div>
+                    </div>
+                    <canvas id="successChart" width="80" height="40" class="mt-2" style="height: 40px; width: 80px;"></canvas>
+                </div>
+            </div>
+
+            <!-- 团队领导力 -->
+            <div class="lg:col-span-1 xl:col-span-1 glass-effect rounded-3xl p-6 card-hover">
+                <div class="text-center space-y-4">
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-tech-purple to-tech-blue flex items-center justify-center animate-float">
+                        <i class="fas fa-users text-2xl text-white"></i>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-black text-white">技术团队</div>
+                        <div class="text-sm text-gray-400">Leadership & Mentoring</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 专业领域 -->
+            <div class="lg:col-span-2 xl:col-span-2 glass-effect rounded-3xl p-6 card-hover">
+                <div class="space-y-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-lg bg-tech-blue bg-opacity-20 flex items-center justify-center">
+                            <i class="fas fa-brain text-tech-blue"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">专业领域</h3>
+                        <span class="text-sm text-gray-400">Core Expertise</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 rounded-full bg-tech-green"></div>
+                                <span class="text-white font-semibold">全链路系统设计</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 rounded-full bg-tech-blue"></div>
+                                <span class="text-white font-semibold">助贷业务架构</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 rounded-full bg-tech-purple"></div>
+                                <span class="text-white font-semibold">金融科技创新</span>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 rounded-full bg-tech-orange"></div>
+                                <span class="text-white font-semibold">微服务架构</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 rounded-full bg-tech-teal"></div>
+                                <span class="text-white font-semibold">云原生部署</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 rounded-full bg-tech-pink"></div>
+                                <span class="text-white font-semibold">团队管理</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 技术栈 -->
+            <div class="lg:col-span-2 xl:col-span-3 glass-effect rounded-3xl p-6 card-hover">
+                <div class="space-y-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-lg bg-tech-purple bg-opacity-20 flex items-center justify-center">
+                            <i class="fas fa-layer-group text-tech-purple"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">技术栈</h3>
+                        <span class="text-sm text-gray-400">Technology Stack</span>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="space-y-3">
+                            <div class="text-sm text-gray-400 uppercase tracking-wider">Backend</div>
+                            <div class="space-y-2">
+                                <div class="flex items-center space-x-2">
+                                    <i class="fab fa-java text-tech-orange"></i>
+                                    <span class="text-white">Java/Spring</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <i class="fab fa-node-js text-tech-green"></i>
+                                    <span class="text-white">Node.js</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <i class="fas fa-database text-tech-blue"></i>
+                                    <span class="text-white">MySQL/Redis</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="text-sm text-gray-400 uppercase tracking-wider">Frontend</div>
+                            <div class="space-y-2">
+                                <div class="flex items-center space-x-2">
+                                    <i class="fab fa-react text-tech-teal"></i>
+                                    <span class="text-white">React/Vue</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <i class="fab fa-js-square text-tech-orange"></i>
+                                    <span class="text-white">TypeScript</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <i class="fas fa-mobile-alt text-tech-purple"></i>
+                                    <span class="text-white">Flutter</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="text-sm text-gray-400 uppercase tracking-wider">DevOps</div>
+                            <div class="space-y-2">
+                                <div class="flex items-center space-x-2">
+                                    <i class="fab fa-docker text-tech-blue"></i>
+                                    <span class="text-white">Docker</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <i class="fas fa-cloud text-tech-teal"></i>
+                                    <span class="text-white">Kubernetes</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <i class="fab fa-aws text-tech-orange"></i>
+                                    <span class="text-white">Cloud Native</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 工作经验时间线 -->
+            <div class="lg:col-span-2 xl:col-span-3 glass-effect rounded-3xl p-6 card-hover">
+                <div class="space-y-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-lg bg-tech-green bg-opacity-20 flex items-center justify-center">
+                            <i class="fas fa-briefcase text-tech-green"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">工作经验</h3>
+                        <span class="text-sm text-gray-400">Professional Experience</span>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="relative pl-8 border-l-2 border-tech-blue border-opacity-30">
+                            <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-tech-blue"></div>
+                            <div>
+                                <div class="text-white font-bold">技术负责人</div>
+                                <div class="text-tech-blue text-sm">工行TOP3助贷合作机构</div>
+                                <div class="text-gray-400 text-sm">2020 - Present</div>
+                                <div class="text-gray-300 text-sm mt-2">
+                                    负责全链路信息系统设计开发，从0到1构建完整的助贷业务平台
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative pl-8 border-l-2 border-tech-purple border-opacity-30">
+                            <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-tech-purple"></div>
+                            <div>
+                                <div class="text-white font-bold">高级软件工程师</div>
+                                <div class="text-tech-purple text-sm">Previous Company</div>
+                                <div class="text-gray-400 text-sm">2018 - 2020</div>
+                                <div class="text-gray-300 text-sm mt-2">
+                                    专注于大型分布式系统架构设计与性能优化
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 联系信息 -->
+            <div class="lg:col-span-2 xl:col-span-2 glass-effect rounded-3xl p-6 card-hover">
+                <div class="space-y-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-lg bg-tech-pink bg-opacity-20 flex items-center justify-center">
+                            <i class="fas fa-envelope text-tech-pink"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">联系方式</h3>
+                        <span class="text-sm text-gray-400">Get In Touch</span>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3 p-3 rounded-xl bg-white bg-opacity-5 hover:bg-opacity-10 transition-all">
+                            <i class="fas fa-envelope text-tech-blue w-5"></i>
+                            <span class="text-white">jiuyi@example.com</span>
+                        </div>
+                        <div class="flex items-center space-x-3 p-3 rounded-xl bg-white bg-opacity-5 hover:bg-opacity-10 transition-all">
+                            <i class="fab fa-linkedin text-tech-teal w-5"></i>
+                            <span class="text-white">linkedin.com/in/jiuyi</span>
+                        </div>
+                        <div class="flex items-center space-x-3 p-3 rounded-xl bg-white bg-opacity-5 hover:bg-opacity-10 transition-all">
+                            <i class="fab fa-github text-tech-purple w-5"></i>
+                            <span class="text-white">github.com/jiuyi</span>
+                        </div>
+                        <div class="flex items-center space-x-3 p-3 rounded-xl bg-white bg-opacity-5 hover:bg-opacity-10 transition-all">
+                            <i class="fas fa-phone text-tech-green w-5"></i>
+                            <span class="text-white">+86 138 0000 0000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 成就统计 -->
+            <div class="lg:col-span-2 xl:col-span-2 glass-effect rounded-3xl p-6 card-hover">
+                <div class="space-y-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-lg bg-tech-orange bg-opacity-20 flex items-center justify-center">
+                            <i class="fas fa-trophy text-tech-orange"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">成就统计</h3>
+                        <span class="text-sm text-gray-400">Achievements</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="text-center">
+                            <div class="text-3xl font-black text-tech-blue mb-1">50+</div>
+                            <div class="text-sm text-gray-400">项目交付</div>
+                            <div class="text-xs text-gray-500">Projects Delivered</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-black text-tech-green mb-1">20+</div>
+                            <div class="text-sm text-gray-400">团队成员</div>
+                            <div class="text-xs text-gray-500">Team Members</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-black text-tech-purple mb-1">99.9%</div>
+                            <div class="text-sm text-gray-400">系统稳定性</div>
+                            <div class="text-xs text-gray-500">System Uptime</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-black text-tech-orange mb-1">100M+</div>
+                            <div class="text-sm text-gray-400">日处理量</div>
+                            <div class="text-xs text-gray-500">Daily Transactions</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 技能雷达图 -->
+            <div class="lg:col-span-2 xl:col-span-2 glass-effect rounded-3xl p-6 card-hover">
+                <div class="space-y-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-lg bg-tech-teal bg-opacity-20 flex items-center justify-center">
+                            <i class="fas fa-chart-area text-tech-teal"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">技能评估</h3>
+                        <span class="text-sm text-gray-400">Skills Assessment</span>
+                    </div>
+                    <canvas id="skillsChart" width="300" height="200" style="height: 200px; width: 300px;"></canvas>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // 成功率图表 - 修复高度拉伸问题
+        try {
+            const successCtx = document.getElementById('successChart').getContext('2d');
+            new Chart(successCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                    datasets: [{
+                        data: [92, 94, 96, 95],
+                        borderColor: '#FF9500',
+                        backgroundColor: 'rgba(255, 149, 0, 0.1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 0,
+                    }]
+                },
+                options: {
+                    responsive: false,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        x: { display: false },
+                        y: { display: false }
+                    },
+                    elements: {
+                        point: { radius: 0 }
+                    }
+                }
+            });
+        } catch (error) {
+            console.error('Chart initialization error:', error);
+        }
+
+        // 技能雷达图 - 添加错误处理
+        try {
+            const skillsCtx = document.getElementById('skillsChart').getContext('2d');
+            new Chart(skillsCtx, {
+                type: 'radar',
+                data: {
+                    labels: ['架构设计', 'Backend', 'Frontend', 'DevOps', '团队管理', '业务理解'],
+                    datasets: [{
+                        label: '技能水平',
+                        data: [95, 90, 85, 88, 92, 94],
+                        borderColor: '#007AFF',
+                        backgroundColor: 'rgba(0, 122, 255, 0.1)',
+                        borderWidth: 2,
+                        pointBackgroundColor: '#007AFF',
+                        pointBorderColor: '#007AFF',
+                        pointRadius: 4,
+                    }]
+                },
+                options: {
+                    responsive: false,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        r: {
+                            beginAtZero: true,
+                            max: 100,
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            },
+                            angleLines: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            },
+                            pointLabels: {
+                                color: '#ffffff',
+                                font: {
+                                    size: 12
+                                }
+                            },
+                            ticks: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+        } catch (error) {
+            console.error('Skills chart initialization error:', error);
+        }
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // 鼠标移动效果
+        document.addEventListener('mousemove', (e) => {
+            const cards = document.querySelectorAll('.card-hover');
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+</body>
+</html>
