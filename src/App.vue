@@ -60,7 +60,7 @@ onMounted(() => {
     
     <!-- 页脚 -->
     <footer class="py-8 px-4 text-center text-gray-500 text-sm border-t border-white/10 mt-12">
-      <p>© 2024 AI编程训练营 - 宇哥的个人作品集</p>
+      <p>© 2025 AI编程出海训练营 - 久溢的个人作品集</p>
     </footer>
   </div>
 </template>
