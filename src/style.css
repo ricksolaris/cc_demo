@@ -1,0 +1,263 @@
+/* Tailwind CSS 指令 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 全局样式和主题颜色设置 */
+:root {
+  /* 字体设置 */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC', 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  /* 主题颜色 - 与项目设计保持一致 */
+  --color-tech-blue: #007AFF;
+  --color-tech-purple: #AF52DE;
+  --color-tech-green: #30D158;
+  --color-tech-orange: #FF9500;
+  --color-tech-pink: #FF2D92;
+  --color-tech-teal: #64D2FF;
+  --color-dark-bg: #0A0A0A;
+  --color-card-bg: #1C1C1E;
+  --color-card-border: #2C2C2E;
+
+  /* Tailwind兼容的颜色变量 */
+  --tech-blue: var(--color-tech-blue);
+  --tech-purple: var(--color-tech-purple);
+  --tech-green: var(--color-tech-green);
+  --tech-orange: var(--color-tech-orange);
+  --tech-pink: var(--color-tech-pink);
+  --tech-teal: var(--color-tech-teal);
+  --dark-bg: var(--color-dark-bg);
+  --card-bg: var(--color-card-bg);
+  --card-border: var(--color-card-border);
+
+  /* 全局颜色设置 */
+  color: rgba(255, 255, 255, 0.87);
+  background-color: var(--color-dark-bg);
+
+  /* 字体渲染优化 */
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 全局链接样式 */
+@layer base {
+  a {
+    @apply font-medium text-tech-blue hover:text-tech-purple transition-colors duration-300 hover:text-shadow;
+    text-decoration: inherit;
+  }
+  
+  body {
+    @apply bg-dark-bg min-w-[320px] min-h-screen overflow-x-hidden;
+    background-image:
+      radial-gradient(circle at 25% 25%, rgba(0, 122, 255, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(175, 82, 222, 0.1) 0%, transparent 50%);
+  }
+  
+  #app {
+    @apply min-h-screen w-full;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold text-white;
+  }
+}
+
+/* 自定义工具类 */
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 0 10px rgba(175, 82, 222, 0.3);
+  }
+  
+  .tech-pattern {
+    background-image:
+      radial-gradient(circle at 25% 25%, rgba(0, 122, 255, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(175, 82, 222, 0.1) 0%, transparent 50%);
+  }
+}
+
+/* 自定义组件样式 */
+@layer components {
+  .btn-primary {
+    @apply rounded-xl bg-gradient-to-r from-tech-blue to-tech-purple text-white px-5 py-2.5 hover:opacity-90 transition-all hover:shadow-lg hover:shadow-tech-blue/20 flex items-center gap-2;
+  }
+  
+  .btn-secondary {
+    @apply px-5 py-2.5 bg-white/10 hover:bg-white/20 rounded-xl transition-all flex items-center gap-2;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-tech-blue/10;
+  }
+}
+
+/* 自定义类 */
+.gradient-bg {
+  background: linear-gradient(-45deg, var(--color-tech-blue), var(--color-tech-purple), var(--color-tech-green), var(--color-tech-orange));
+  background-size: 400% 400%;
+  animation: gradient-shift 4s ease-in-out infinite;
+}
+
+.tech-glow {
+  box-shadow: 0 0 30px rgba(0, 122, 255, 0.2);
+}
+
+.card-hover {
+  transition: all 0.3s ease;
+  --mouse-x: 0px;
+  --mouse-y: 0px;
+  position: relative;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 10px 30px -10px rgba(0, 122, 255, 0.2);
+}
+
+.card-hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(0, 122, 255, 0.1), transparent 40%);
+  pointer-events: none;
+  transition: background 0.1s ease;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-tech-blue), var(--color-tech-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.line-chart {
+  position: relative;
+  height: 60px;
+  overflow: hidden;
+}
+
+.line-chart::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-tech-blue), transparent);
+  animation: data-flow 3s linear infinite;
+}
+
+.tech-pattern {
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(0, 122, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(175, 82, 222, 0.1) 0%, transparent 50%);
+}
+
+.glass-effect {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(28, 28, 30, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 渐变文本悬停效果 */
+.text-white:hover {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  transition: text-shadow 0.3s ease;
+}
+
+/* 渐变边框效果 */
+.gradient-border {
+  position: relative;
+  border-radius: 12px;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 14px;
+  background: linear-gradient(45deg, var(--color-tech-blue), var(--color-tech-purple), var(--color-tech-green), var(--color-tech-orange));
+  z-index: -1;
+  animation: gradient-shift 4s ease infinite;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(28, 28, 30, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 122, 255, 0.3);
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 122, 255, 0.5);
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+  .max-w-7xl {
+    max-width: 95%;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    font-size: 14px;
+  }
+  
+  .p-8 {
+    padding: 1.5rem !important;
+  }
+  
+  .gap-8 {
+    gap: 1.5rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .p-6 {
+    padding: 1.25rem !important;
+  }
+  
+  .gap-6 {
+    gap: 1rem !important;
+  }
+}
+
+/* 加载动画 */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading {
+  animation: spin 1s linear infinite;
+}
+
+/* 淡入动画 */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
